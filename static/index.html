@@ -1,10 +1,897 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <title>
-        Static Website
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonder Box Games - 创造有趣的游戏体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #0f1525;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部导航 */
+        header {
+            background-color: rgba(18, 25, 40, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(64, 156, 255, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(155, 89, 182, 0.3);
+        }
+        
+        .logo-text {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: #9b59b6;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #5dade2;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at 20% 50%, rgba(41, 128, 185, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.15) 0%, transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: #9b59b6;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* 游戏展示区域 */
+        .games-section {
+            padding: 100px 0;
+            background-color: rgba(10, 15, 25, 0.7);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .game-card {
+            background-color: rgba(18, 25, 40, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(64, 156, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(64, 156, 255, 0.3);
+        }
+        
+        .game-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1a5276, #8e44ad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .game-content {
+            padding: 25px;
+        }
+        
+        .game-content h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .game-content p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .game-tag {
+            background: rgba(52, 152, 219, 0.15);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .game-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .game-link:hover {
+            color: #5dade2;
+        }
+        
+        /* 关于我们区域 */
+        .about-section {
+            padding: 100px 0;
+            background-color: rgba(15, 21, 37, 0.7);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        
+        .about-text p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .feature-icon {
+            background: rgba(52, 152, 219, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .feature-text h4 {
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .feature-text p {
+            color: #aaa;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-image-box {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        /* 法律链接区域 */
+        .legal-section {
+            padding: 80px 0;
+            background-color: rgba(10, 15, 25, 0.9);
+            text-align: center;
+        }
+        
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .legal-link {
+            color: #5dade2;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 12px 25px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .legal-link:hover {
+            background: rgba(52, 152, 219, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: rgba(5, 10, 20, 0.95);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(64, 156, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #5dade2;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(18, 25, 40, 0.98);
+                padding: 20px;
+                display: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .legal-link {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* 星空背景 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-<h2>Static Website</h2>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">W</div>
+                    <div class="logo-text">Wonder <span>Box</span> Games</div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#games">我们的游戏</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>创造<span>有趣</span>的游戏体验</h1>
+                <p>Wonder Box Games 致力于开发简单、有趣且富有挑战性的手机游戏。我们的目标是创造能够为玩家带来欢乐和娱乐的游戏体验。</p>
+                <div class="hero-btns">
+                    <a href="#games" class="btn btn-primary">探索我们的游戏</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 游戏展示区域 -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的游戏</h2>
+                <p>探索 Wonder Box Games 开发的精彩游戏</p>
+            </div>
+            
+            <div class="games-grid">
+                <!-- 太空大战游戏 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        🚀
+                    </div>
+                    <div class="game-content">
+                        <h3>太空大战</h3>
+                        <p>一款刺激的太空射击游戏，驾驶飞船在太空中与敌方战斗，击碎飞来的陨石，获得高分！</p>
+                        <div class="game-tags">
+                            <span class="game-tag">动作</span>
+                            <span class="game-tag">射击</span>
+                            <span class="game-tag">街机</span>
+                            <span class="game-tag">免费</span>
+                        </div>
+                        <a href="#" class="game-link">即将上线 →</a>
+                    </div>
+                </div>
+                
+                <!-- 即将推出的游戏 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        🎮
+                    </div>
+                    <div class="game-content">
+                        <h3>神秘冒险</h3>
+                        <p>一款充满谜题和探索的游戏，穿越神秘世界，解开古老秘密，寻找隐藏的宝藏。</p>
+                        <div class="game-tags">
+                            <span class="game-tag">冒险</span>
+                            <span class="game-tag">解谜</span>
+                            <span class="game-tag">探索</span>
+                        </div>
+                        <a href="#" class="game-link">开发中 →</a>
+                    </div>
+                </div>
+                
+                <!-- 即将推出的游戏 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        🧩
+                    </div>
+                    <div class="game-content">
+                        <h3>益智挑战</h3>
+                        <p>一系列精心设计的益智游戏，锻炼你的大脑，挑战你的逻辑思维和解决问题的能力。</p>
+                        <div class="game-tags">
+                            <span class="game-tag">益智</span>
+                            <span class="game-tag">策略</span>
+                            <span class="game-tag">脑力</span>
+                        </div>
+                        <a href="#" class="game-link">即将推出 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 关于我们区域 -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>关于 Wonder Box Games</h2>
+                    <p>我们是一家专注于手机游戏开发的公司，致力于创造简单、有趣且富有挑战性的游戏体验。我们相信游戏应该易于上手但难以精通，为玩家提供持久的娱乐价值。</p>
+                    <p>我们的团队由充满热情的游戏开发者组成，专注于创新游戏机制和令人愉悦的视觉设计。我们重视玩家的反馈，并不断改进我们的游戏。</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-text">
+                                <h4>简单而有趣</h4>
+                                <p>我们的游戏设计理念是简单易上手，同时提供足够的深度和挑战性。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <div class="feature-text">
+                                <h4>隐私优先</h4>
+                                <p>我们尊重玩家隐私，尽可能少地收集数据，并保护所有收集的信息。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">💡</div>
+                            <div class="feature-text">
+                                <h4>持续创新</h4>
+                                <p>我们不断探索新的游戏创意和机制，为玩家带来新鲜的游戏体验。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="about-image-box">
+                        🎲
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 法律链接区域 -->
+    <section class="legal-section">
+        <div class="container">
+            <h2>法律文件</h2>
+            <p>查看我们的隐私政策和使用条款</p>
+            
+            <div class="legal-links">
+                <a href="privacy-policy.html" class="legal-link">隐私政策</a>
+                <a href="terms-of-service.html" class="legal-link">使用条款</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wonder Box Games</h3>
+                    <p>创造有趣、创新和高质量的手机游戏体验。</p>
+                    <p>我们的使命是让每个人都能享受游戏的乐趣。</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#games">我们的游戏</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">隐私政策</a></li>
+                        <li><a href="terms-of-service.html">使用条款</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <p>如有任何问题或反馈，请通过电子邮件联系我们：</p>
+                    <p><strong>lbk928321@gmail.com</strong></p>
+                    <p>我们期待听到您的想法！</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Wonder Box Games. 保留所有权利。</p>
+                <p>本网站和所有游戏均为 Wonder Box Games 的财产。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 创建星空背景
+        function createStars() {
+            const starsElement = document.getElementById('stars');
+            const starCount = 200;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // 随机大小和位置
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 5 + 3;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${duration}s`;
+                
+                starsElement.appendChild(star);
+            }
+        }
+        
+        // 移动菜单切换
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // 点击菜单链接后关闭移动菜单
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 窗口调整大小时隐藏移动菜单
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        }
+        
+        // 平滑滚动到锚点
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // 自动更新年份
+        function updateYear() {
+            const yearElement = document.querySelector('.footer-bottom p');
+            if (yearElement && yearElement.textContent.includes('2023')) {
+                const currentYear = new Date().getFullYear();
+                if (currentYear > 2023) {
+                    yearElement.textContent = yearElement.textContent.replace('2023', `2023-${currentYear}`);
+                }
+            }
+        }
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            setupMobileMenu();
+            setupSmoothScroll();
+            updateYear();
+            
+            // 为游戏链接添加提示
+            const gameLinks = document.querySelectorAll('.game-link');
+            gameLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('游戏即将上线！请关注我们的更新。');
+                });
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(18, 25, 40, 0.98)';
+                header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.4)';
+            } else {
+                header.style.backgroundColor = 'rgba(18, 25, 40, 0.95)';
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
+            }
+        });
+    </script>
 </body>
 </html>

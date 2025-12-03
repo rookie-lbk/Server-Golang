@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用条款 - Wonder Box Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #0f1525;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(41, 128, 185, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(155, 89, 182, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(18, 25, 40, 0.9);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(64, 156, 255, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(64, 156, 255, 0.3);
+        }
+        
+        .company-name {
+            color: #9b59b6;
+            font-weight: bold;
+            font-size: 3rem;
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            color: #3498db;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        
+        .company-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 20px rgba(155, 89, 182, 0.4);
+        }
+        
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0 25px;
+            justify-content: center;
+        }
+        
+        .game-tag {
+            background: rgba(52, 152, 219, 0.15);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 30px 0 15px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #5dade2;
+            margin: 25px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        
+        .contact-info {
+            background-color: rgba(30, 40, 60, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        
+        .email {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .last-updated {
+            text-align: right;
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-button {
+            background: rgba(52, 152, 219, 0.2);
+            color: #5dade2;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-button:hover {
+            background: rgba(52, 152, 219, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .company-name {
+                font-size: 2.2rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                text-align: center;
+            }
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            font-size: 1.5rem;
+            animation-delay: -5s;
+            animation-duration: 25s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            font-size: 1.8rem;
+            animation-delay: -10s;
+            animation-duration: 30s;
+        }
+        
+        .floating-element:nth-child(4) {
+            bottom: 20%;
+            right: 20%;
+            font-size: 1.3rem;
+            animation-delay: -15s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动元素背景 -->
+    <div class="floating-elements">
+        <div class="floating-element">📜</div>
+        <div class="floating-element">⚖️</div>
+        <div class="floating-element">📱</div>
+        <div class="floating-element">✅</div>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="company-icon">W</div>
+            <div class="company-name">Wonder Box Games</div>
+            <h1>使用条款</h1>
+            <p class="subtitle">适用于所有 Wonder Box Games 开发的游戏</p>
+            
+            <div class="game-list">
+                <div class="game-tag">太空大战</div>
+                <div class="game-tag">更多游戏即将推出</div>
+            </div>
+        </div>
+        
+        <div class="last-updated" id="lastUpdated">最后更新日期：2023年10月</div>
+        
+        <div class="content">
+            <p>请仔细阅读这些使用条款（"条款"），因为它们规定了您使用Wonder Box Games开发的所有游戏（以下简称"游戏"或"服务"）的条件。</p>
+            
+            <div class="highlight">
+                <p><strong>重要提示：</strong>通过下载、安装或使用我们的任何游戏，即表示您同意这些条款。如果您不同意这些条款，请不要使用我们的游戏。</p>
+            </div>
+            
+            <h2>1. 游戏许可</h2>
+            <p>在您遵守这些条款的前提下，Wonder Box Games授予您有限的、非独占的、不可转让的、可撤销的许可，以在您个人设备上下载、安装和使用我们的游戏仅供个人非商业用途。</p>
+            
+            <h2>2. 使用限制</h2>
+            <p>您同意不：</p>
+            <ul>
+                <li>复制、修改、改编或创建游戏的衍生作品</li>
+                <li>尝试对游戏进行逆向工程、反编译、反汇编或提取源代码</li>
+                <li>移除、更改或模糊处理游戏中的任何版权、商标或其他专有声明</li>
+                <li>使用游戏进行任何非法、欺诈、侵权或有害活动</li>
+                <li>使用自动化系统（如机器人、蜘蛛）访问游戏或干扰游戏的正常运行</li>
+                <li>开发或使用任何第三方软件与游戏交互，除非获得明确授权</li>
+            </ul>
+            
+            <h2>3. 虚拟物品与游戏内购买</h2>
+            <p>如果游戏提供虚拟物品或游戏内购买：</p>
+            <ul>
+                <li>您购买的是有限的、可撤销的使用虚拟物品的许可，而非物品本身的所有权</li>
+                <li>虚拟物品没有现金价值，不能兑换真实货币、商品或服务</li>
+                <li>所有销售是最终销售，除非法律要求，否则不提供退款</li>
+                <li>我们保留管理、修改、替换或移除虚拟物品的权利</li>
+            </ul>
+            
+            <h2>4. 用户生成内容</h2>
+            <p>如果游戏允许您创建、上传或提交内容：</p>
+            <ul>
+                <li>您保留对您内容的所有权利，但授予我们全球性的、免版税的许可以使用、修改和展示您的内容</li>
+                <li>您声明并保证您拥有或有权分享您提交的内容</li>
+                <li>您的内容不得侵犯他人权利、违反法律或包含不当内容</li>
+                <li>我们保留移除任何违反这些条款的内容的权利，恕不另行通知</li>
+            </ul>
+            
+            <h2>5. 免责声明</h2>
+            <p>游戏按"原样"和"可用"的基础提供，不提供任何明示或暗示的保证，包括但不限于适销性、特定用途适用性和不侵权的保证。我们不保证游戏：</p>
+            <ul>
+                <li>将满足您的所有要求</li>
+                <li>将不间断、及时、安全或无错误</li>
+                <li>错误将被纠正</li>
+                <li>游戏或服务器没有病毒、恶意软件或其他有害组件</li>
+            </ul>
+            
+            <h2>6. 责任限制</h2>
+            <p>在法律允许的最大范围内，Wonder Box Games及其关联方不对因使用或无法使用游戏而引起的任何间接、附带、特殊、后果性或惩罚性损害承担责任，包括但不限于利润损失、数据丢失或业务中断。</p>
+            
+            <h2>7. 终止</h2>
+            <p>如果您违反这些条款，我们可能会终止或暂停您访问游戏的权限，恕不另行通知。终止后，您必须停止使用游戏并删除所有副本。</p>
+            
+            <h2>8. 变更</h2>
+            <p>我们保留随时修改这些条款的权利。重大变更将通过游戏内通知或更新游戏商店列表来通知您。继续使用游戏即表示您接受更新后的条款。</p>
+            
+            <h2>9. 适用法律与争议解决</h2>
+            <p>这些条款受您所在国家/地区的法律管辖，不考虑法律冲突原则。任何与这些条款或游戏相关的争议应首先通过友好协商解决，协商不成的，提交有管辖权的法院诉讼解决。</p>
+            
+            <h2>10. 可分割性</h2>
+            <p>如果这些条款的任何条款被认定为无效或不可执行，其余条款将继续有效并具有完全效力。</p>
+            
+            <div class="contact-info">
+                <h3>联系我们</h3>
+                <p>如果您对我们的使用条款或任何游戏有任何疑问、疑虑或反馈，请通过以下方式与我们联系：</p>
+                <p class="email">lbk928321@gmail.com</p>
+                <p>我们通常会在3-5个工作日内回复您的询问。</p>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="privacy-policy.html" class="nav-button">← 查看隐私政策</a>
+            <a href="#" class="nav-button" id="homeButton">返回主页</a>
+        </div>
+        
+        <div class="footer">
+            <p>© <span id="currentYear">2023</span> Wonder Box Games 版权所有</p>
+            <p>本使用条款适用于 Wonder Box Games 开发的所有游戏，包括现有游戏和未来发布的游戏</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+            const homeButton = document.getElementById('homeButton');
+            const lastUpdatedElement = document.getElementById('lastUpdated');
+            const currentYearElement = document.getElementById('currentYear');
+            
+            // 返回顶部按钮
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // 显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+            
+            // 页面加载时检查滚动位置
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+            
+            // 设置主页按钮行为
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                // 跳转到主页
+                window.location.href = "index.html";
+            });
+            
+            // 自动更新年份
+            if (currentYearElement) {
+                const currentYear = new Date().getFullYear();
+                if (currentYear > 2023) {
+                    currentYearElement.textContent = `2023-${currentYear}`;
+                }
+            }
+            
+            // 自动更新最后更新日期
+            if (lastUpdatedElement) {
+                const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+                const now = new Date();
+                const formattedDate = `${now.getFullYear()}年${months[now.getMonth()]}${now.getDate()}日`;
+                lastUpdatedElement.textContent = `最后更新日期：${formattedDate}`;
+            }
+        });
+    </script>
+</body>
+</html>
